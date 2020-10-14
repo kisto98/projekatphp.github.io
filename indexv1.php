@@ -1,3 +1,7 @@
+<?php
+session_start()
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -25,16 +29,24 @@
 
       <h1 class="logo mr-auto"><a href="index.html">E-Bazzar</a></h1>
       <nav class="nav-menu d-none d-lg-block">
-        <ul>
+       <ul>
           <li class="active"><a href="index.html">Pocetna</a></li>
           <li><a href="#about">Kupovina</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
+        
+    <!-- .nav-menu -->
+		
+<li class="drop-down"> <input type="button" class="get-started-btn scrollto" id="usernam" value="<?php echo $_SESSION["username"]; ?>"/> 
+	<ul>
+	 <li><a href="#about">Settings</a></li>
+          <li><a href="#kontakt">Logout</a></li>
+	</ul>
 
-      <a href="login.php" class="get-started-btn scrollto">Uloguj se</a>
-	     <a href="singin.php" class="get-started-btn scrollto">Registruj se</a>
-
+</li>
+</ul>
+  
+  </nav>
+  
     </div>
   </header><!-- End Header -->
 

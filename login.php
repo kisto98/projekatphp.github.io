@@ -1,6 +1,41 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<?php
+   define('DB_SERVER', 'localhost');
+   define('DB_USERNAME', 'root');
+   define('DB_PASSWORD', '');
+   define('DB_DATABASE', 'ebazzar');
+   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+   
+     session_start();
+	 if (isset($_POST['login'])) {
+      // username and password sent from form 
+      
+      $myusername = $_POST['username'];
+      $mypassword = $_POST['pass'];
+	 
+	 
+		
+		
+		$query = "SELECT * FROM users WHERE Username='$myusername' AND Password='$mypassword' LIMIT 1";
+		$results = mysqli_query($db, $query);
+		if (mysqli_num_rows($results) == 1) {
+			$logged_in_user = mysqli_fetch_assoc($results);
+		
+				$_SESSION['user'] = $logged_in_user;
+				$_SESSION['success']  = "You are now logged in";
+				$_SESSION['username']=$_POST['username'];
+				header('location: indexv1.php');
+			}
+		else { $message = "neispravan username/password";
+echo "<script type='text/javascript'>alert('$message');</script>";
+			
+	}
+	 }
+
+	 
+?> 
+<html>
+
 <head>
 	<title>E-bazzar login</title>
 	<meta charset="UTF-8">
@@ -40,18 +75,17 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="login.html" class="get-started-btn scrollto">Uloguj se</a>
-	     <a href="singin.html" class="get-started-btn scrollto">Registruj se</a>
+        <a href="login.php" class="get-started-btn scrollto">Uloguj se</a>
+	     <a href="singin.php" class="get-started-btn scrollto">Registruj se</a>
 
     </div>
   </header><!-- End Header -->
 	
 	
-		<div class=" bg-gra-03">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-50 p-b-90">
-				<form method="POST" action="#">
-				<form class="login100-form validate-form flex-sb flex-w" method="post">
+		<form action = "" method = "post" class="login100-form validate-form flex-sb flex-w" >
+			<div class="container-login100">
+				<div class="wrap-login100 p-t-50 p-b-90">
+				
 					<span class="login100-form-title p-b-51">
 						Login
 					</span>
@@ -89,15 +123,16 @@
 					</div>
 							
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type = "submit" name= "login">
 							Login
 						</button>
+						
 					</div>
 
-				</form>
+				
 			</div>
 		</div>
-	</div>
+	</form>
 
 
 	<div id="dropDownSelect1"></div>
@@ -121,3 +156,4 @@
 
 </body>
 </html>
+

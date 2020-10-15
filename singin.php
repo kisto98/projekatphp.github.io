@@ -110,7 +110,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                     <h2 class="title">Unesite vase podatke da bi ste se registrovali</h2>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+c
                          <div class="form-row">
                             <div class="name">Username</div>
                             <div class="value">

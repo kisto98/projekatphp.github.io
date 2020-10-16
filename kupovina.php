@@ -1,23 +1,16 @@
 <?php
- define('DB_SERVER', 'localhost');
+define('DB_SERVER', 'localhost');
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', '');
    define('DB_DATABASE', 'ebazzar');
    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-    $sql= "SELECT * FROM abba";
-   $result=mysqli_query($db,$sql) or die("bq $sql");
-session_start();
-
-		if(isset($_POST['logout'])) {
-session_start();
-session_unset();
-session_destroy();
-
-header("location:index.php"); }
+	session_start();
+	$sql= "SELECT * FROM abba";
+	$result=mysqli_query($db,$sql) or die("bq $sql");
+	
 ?>
-<!DOCTYPE html>
-<html>
 
+<html>
 <head>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -34,36 +27,23 @@ header("location:index.php"); }
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
-
 <body>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="indexv1.php">E-Bazzar</a></h1>
+      <h1 class="logo mr-auto"><a href="index.php">E-Bazzar</a></h1>
       <nav class="nav-menu d-none d-lg-block">
-       <ul>
-          <li class="active"><a href="indexv1.php">Pocetna</a></li>
-          <li><a href="kupovinav1.php">Kupovina</a></li>
+        <ul>
+          <li class="active"><a href="index.php">Pocetna</a></li>
+          <li><a href="kupovina.php">Kupovina</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
-        
-    <!-- .nav-menu -->
-		
-<li class="drop-down"> <input type="button" class="get-started-btn scrollto" id="usernam" value="<?php echo $_SESSION["username"]; ?>"/> 
-	<ul>
-	 <li><a href="settings.php">Settings</a></li>
-          <li><a href="#kontakt">Moje ponude</a></li>
-		  <li><a href="#">Moje aukcije</a></li>
-        
-	</ul>
+        </ul>
+      </nav><!-- .nav-menu -->
 
-</li>
+      <a href="login.php" class="get-started-btn scrollto">Uloguj se</a>
+	     <a href="singin.php" class="get-started-btn scrollto">Registruj se</a>
 
-   <form method="POST">
-		  <button class="login100-form-btn" type = "submit" name= "logout">Logout</button>
-		 </form>
-  </nav>
-  </ul>
     </div>
   </header><!-- End Header -->
 
@@ -77,14 +57,12 @@ header("location:index.php"); }
         </div>
        </div>
     </div>
-</section><!-- End Hero -->
-  
-   <div class="section-title">
-          
-          <h2>Najnovije</h2>
-          <h3>Poslednje dodate stvari</h3>
-        </div>
-		
+</section><!-
+
+<br><br><br>
+
+
+    
 <?php 
 if(mysqli_num_rows($result) > 0) {
 	echo"<table>";
@@ -115,5 +93,6 @@ if(mysqli_num_rows($result) > 0) {
 	echo"</table>";
 }
 ?>
+
 </body>
 </html>

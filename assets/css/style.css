@@ -1235,6 +1235,11 @@ section {
   padding: 0 0 0 0;
 }
 
+.slike img {
+    width: 100px;
+    height: 100px;
+}
+
 @media (max-width: 992px) {
   .portfolio-details .portfolio-description h2 {
     width: 100%;

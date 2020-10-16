@@ -62,24 +62,26 @@ echo "<script type='text/javascript'>alert('$message');</script>";
   <!-- Template Main CSS File -->
   
 </head>
-<body>
-	<header id="header" class="fixed-top">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">E-Bazzar</a></h1>
+      <h1 class="logo mr-auto"><a href="index.php">E-Bazzar</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Pocetna</a></li>
-          <li><a href="#about">Kupovina</a></li>
+          <li class="active"><a href="index.php">Pocetna</a></li>
+          <li><a href="kupovina.php">Kupovina</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
-        <a href="login.php" class="get-started-btn scrollto">Uloguj se</a>
+      <a href="login.php" class="get-started-btn scrollto">Uloguj se</a>
 	     <a href="singin.php" class="get-started-btn scrollto">Registruj se</a>
 
     </div>
   </header><!-- End Header -->
+
+
 	
 	
 		<form action = "" method = "post" class="login100-form validate-form flex-sb flex-w" >
@@ -110,13 +112,9 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 							</label>
 						</div>
 
+						
 						<div>
-							<a href="#" class="txt1">
-								Forgot?
-							</a>
-						</div>
-						<div>
-							<a href="singin.html" class="txt1">
+							<a href="singin.php" class="txt1">
 								Nemas nalog?
 							</a>
 						</div>

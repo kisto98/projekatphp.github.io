@@ -78,13 +78,6 @@ header("location:index.php"); }
        </div>
     </div>
 </section><!-- End Hero -->
-  
-   <div class="section-title">
-          
-          <h2>Najnovije</h2>
-          <h3>Poslednje dodate stvari</h3>
-        </div>
-		
 <?php 
 if(mysqli_num_rows($result) > 0) {
 	echo"<table>";

@@ -17,13 +17,18 @@
 	$myemail  =  ($_POST['email']);
 	$mytelefon  =  ($_POST['telefon']);
 	 
-	$query1 = "SELECT 'Username' FROM 'users' WHERE Username=?";
-
-$query1 = mysqli_query($db, "SELECT * FROM users WHERE Username='".$myusername."'");
-
+	$query1 = "SELECT 'Email' FROM 'users' WHERE Email=?";
+$query1 = mysqli_query($db, "SELECT * FROM users WHERE Email='".$myemail."'");
+$query2 = "SELECT 'Username' FROM 'users' WHERE Username=?";
+$query2 = mysqli_query($db, "SELECT * FROM users WHERE Username='".$myusername."'");
+  if (mysqli_num_rows($query2)!=0){
+	  	$message = "username je zauzet";
+echo "<script type='text/javascript'>alert('$message');</script>";
+  }
+  else{
     if (mysqli_num_rows($query1)!=0)
     {
-       	$message = "user je zauzet";
+       	$message = "email je zauzet";
 echo "<script type='text/javascript'>alert('$message');</script>";
 	}
     else {
@@ -42,7 +47,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 
 			}	
 		}
-	
+		}
 ?>
 
 <html>
@@ -81,18 +86,18 @@ echo "<script type='text/javascript'>alert('$message');</script>";
     <link href="singinasset/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="singinasset/css/main.css" rel="stylesheet" media="all"> -->
+    <link href="singinasset/css/main.css" rel="stylesheet" media="all"> 
 </head>
 
 <body>
  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">E-Bazzar</a></h1>
+      <h1 class="logo mr-auto"><a href="index.php">E-Bazzar</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Pocetna</a></li>
-          <li><a href="#about">Kupovina</a></li>
+          <li class="active"><a href="index.php">Pocetna</a></li>
+          <li><a href="kupovina.php">Kupovina</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -110,7 +115,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                     <h2 class="title">Unesite vase podatke da bi ste se registrovali</h2>
                 </div>
                 <div class="card-body">
-c
+						<form method="POST">
                          <div class="form-row">
                             <div class="name">Username</div>
                             <div class="value">

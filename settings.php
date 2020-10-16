@@ -36,8 +36,18 @@ if (isset($_POST['promeniemail']))	{
 $message = "promenili ste email";
 echo "<script type='text/javascript'>alert('$message');</script>";	
 }
-	 
 ?>
+<?php
+if (isset($_POST['logout']))	{
+session_start();
+session_unset();
+session_destroy();
+
+header("location:index.php");
+exit();}
+?>
+	 
+
 
 <html>
 <head>
@@ -64,7 +74,9 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 <li class="drop-down"> <input type="button" class="get-started-btn scrollto" id="usernam" value="<?php echo $_SESSION["username"]; ?>"/> 
 	<ul>
 	 <li><a href="#about">Settings</a></li>
-          <li><a href="#kontakt">Logout</a></li>
+          <form method="POST">
+		  <li><a href="#kontakt" name="logout">Logout</a></li>
+		  </form>
 	</ul>
 
 </li>
@@ -73,6 +85,37 @@ echo "<script type='text/javascript'>alert('$message');</script>";
       </div>
   </header><!-- End Header -->
 </head>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="indexv1.php">E-Bazzar</a></h1>
+      <nav class="nav-menu d-none d-lg-block">
+       <ul>
+          <li class="active"><a href="indexv1.php">Pocetna</a></li>
+          <li><a href="kupovinav1.php">Kupovina</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        
+    <!-- .nav-menu -->
+		
+<li class="drop-down"> <input type="button" class="get-started-btn scrollto" id="usernam" value="<?php echo $_SESSION["username"]; ?>"/> 
+	<ul>
+	 <li><a href="settings.php">Settings</a></li>
+          <li><a href="#kontakt">Moje ponude</a></li>
+		  <li><a href="#">Moje aukcije</a></li>
+        
+	</ul>
+
+</li>
+
+   <form method="POST">
+		  <button class="login100-form-btn" type = "submit" name= "logout">Logout</button>
+		 </form>
+  </nav>
+  </ul>
+    </div>
+  </header><!-- End Header -->
+  <br><br><br>
 <div class="section-title">
 <div class="section-title">
 <body>
